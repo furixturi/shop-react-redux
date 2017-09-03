@@ -1,7 +1,7 @@
 {
-    "name": "react-redux-async",
+    "name": "test",
     "version": "1.0.0",
-    "description": "webpack with the async example from react-redux official doc",
+    "description": "test with react",
     "main": "index.js",
     "scripts": {
         "test": "",
