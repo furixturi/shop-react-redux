@@ -2,15 +2,15 @@ import fetch from 'isomorphic-fetch';
 
 export const REQUEST_CATEGORIES = 'REQUEST_CATEGORIES';
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
-export const REQUEST_ITEMS = 'REQUEST_ITEMS';
-export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
+export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS';
+export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
 
 export const SELECT_CATEGORY = 'SELECT_CATEGORY';
 
 export const INVALIDATE_CATEGORY = 'INVALIDATE_CATEGORY';
 
-export const REQUEST_SINGLE_ITEM = 'REQUEST_SINGLE_ITEM';
-export const RECEIVE_SINGLE_ITEM = 'RECEIVE_SINGLE_ITEM';
+export const REQUEST_SINGLE_PRODUCT = 'REQUEST_SINGLE_PRODUCT';
+export const RECEIVE_SINGLE_PRODUCT = 'RECEIVE_SINGLE_PRODUCT';
 
 // show loading
 function requestCategories() {
@@ -36,32 +36,32 @@ export function fetchCategories() {
 }
 
 // show loading
-function requestItems(categoryId = '1') {
+function requestProducts(categoryId = '1') {
     return {
-        type: REQUEST_ITEMS,
+        type: REQUEST_PRODUCTS,
         categoryId
     };
 }
 
-function receiveItems(categoryId, json) {
+function receiveProducts(categoryId, json) {
     return {
-        type: RECEIVE_ITEMS,
+        type: RECEIVE_PRODUCTS,
         categoryId,
         items: json.data,
         receivedAt: Date.now()
     };
 }
 
-function fetchItems(categoryId = '1') {
+function fetchProducts(categoryId = '1') {
     return dispatch => {
-        dispatch(requestItems(categoryId));
+        dispatch(requestProducts(categoryId));
         return fetch('http://localhost:5000/items')
             .then(response => response.json())
-            .then(json => dispatch(receiveItems(categoryId, json)));
+            .then(json => dispatch(receiveProducts(categoryId, json)));
     };
 }
 
-function shouldFetchItems(state, categoryId = '1') {
+function shouldFetchProducts(state, categoryId = '1') {
     const items = state.itemsByCategory[categoryId];
 
     if (!items) {
@@ -87,10 +87,10 @@ export function invalidateCategory(categoryId = '1') {
     };
 }
 
-export function fetchItemsIfNeeded(categoryId = '1') {
+export function fetchProductsIfNeeded(categoryId = '1') {
     return (dispatch, getState) => {
-        if (shouldFetchItems(getState(), categoryId)) {
-            return dispatch(fetchItems(categoryId));
+        if (shouldFetchProducts(getState(), categoryId)) {
+            return dispatch(fetchProducts(categoryId));
         }
     };
 }
