@@ -12,7 +12,7 @@ export const INVALIDATE_CATEGORY = 'INVALIDATE_CATEGORY';
 export const REQUEST_SINGLE_ITEM = 'REQUEST_SINGLE_ITEM';
 export const RECEIVE_SINGLE_ITEM = 'RECEIVE_SINGLE_ITEM';
 
-
+// show loading
 function requestCategories() {
     return {
         type: REQUEST_CATEGORIES
@@ -35,6 +35,7 @@ export function fetchCategories() {
     };
 }
 
+// show loading
 function requestItems(categoryId = '1') {
     return {
         type: REQUEST_ITEMS,
