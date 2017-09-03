@@ -8,7 +8,10 @@ import {
     INVALIDATE_CATEGORY
 } from '../actions/actions';
 
-function categories(state, action) {
+function categories(state = {
+    isFetching: false,
+    items: []
+}, action) {
     switch (action.type) {
         case REQUEST_CATEGORIES:
             return Object.assign({}, state, {
