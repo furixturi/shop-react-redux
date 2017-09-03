@@ -26,15 +26,6 @@ function receiveCategories(json) {
     };
 }
 
-export function fetchCategories() {
-    return dispatch => {
-        dispatch(requestCategories());
-        return fetch('http://localhost:5000/categories')
-            .then(response => response.json())
-            .then(json => dispatch(receiveCategories(json)));
-    };
-}
-
 // show loading
 function requestProducts(categoryId = '1') {
     return {
@@ -62,7 +53,7 @@ function fetchProducts(categoryId = '1') {
 }
 
 function shouldFetchProducts(state, categoryId = '1') {
-    const items = state.itemsByCategory[categoryId];
+    const items = state.productsByCategory[categoryId];
 
     if (!items) {
         return true;
@@ -95,3 +86,12 @@ export function fetchProductsIfNeeded(categoryId = '1') {
     };
 }
 
+export function fetchCategories() {
+    return dispatch => {
+        dispatch(requestCategories());
+        return fetch('http://localhost:5000/categories')
+            .then(response => response.json())
+            .then(json => dispatch(receiveCategories(json)))
+            .then(() => dispatch(fetchProductsIfNeeded()));
+    };
+}
