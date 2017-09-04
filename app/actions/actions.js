@@ -17,10 +17,10 @@ function requestCategories() {
     };
 }
 
-function receiveCategories(json) {
+function receiveCategories(categories) {
     return {
         type: RECEIVE_CATEGORIES,
-        categories: json.data,
+        categories: categories,
     };
 }
 
@@ -32,11 +32,11 @@ function requestProducts(categoryId = '1') {
     };
 }
 
-function receiveProducts(categoryId, json) {
+function receiveProducts(categoryId, products) {
     return {
         type: RECEIVE_PRODUCTS,
         categoryId,
-        products: json.data
+        products: products
     };
 }
 
@@ -45,7 +45,18 @@ function fetchProducts(categoryId = '1') {
         dispatch(requestProducts(categoryId));
         return fetch('http://localhost:5000/items')
             .then(response => response.json())
-            .then(json => dispatch(receiveProducts(categoryId, json)));
+            .then(json => {
+                const rawData = json.data;
+                const formattedData = rawData.map((item) => {
+                    const formattedPrice = item.price.toLocaleString(undefined, {
+                        style: 'currency',
+                        currency: 'JPY',
+                        currencyDisplay: 'symbol'
+                    });
+                    return Object.assign(item, {price: formattedPrice});
+                });
+                dispatch(receiveProducts(categoryId, formattedData));
+            });
     };
 }
 
@@ -61,7 +72,7 @@ export function fetchCategories() {
         dispatch(requestCategories());
         return fetch('http://localhost:5000/categories')
             .then(response => response.json())
-            .then(json => dispatch(receiveCategories(json)))
+            .then(json => dispatch(receiveCategories(json.data)))
             .then(() => dispatch(fetchProducts()));
     };
 }
