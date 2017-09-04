@@ -8,11 +8,6 @@ class Product extends React.Component {
     }
 
     render() {
-        let formattedPrice = this.props.price.toLocaleString(undefined, {
-            style: 'currency',
-            currency: 'JPY',
-            currencyDisplay: 'symbol'
-        });
         return (
             <div className={'product' + (this.props.isSoldOut ? ' sold-out' : '')}>
                 <div className = "image-container">
@@ -20,7 +15,7 @@ class Product extends React.Component {
                 </div>
                 <div className = "info-container">
                     <div className="product-name">{this.props.name}</div>
-                    <div className="price">{formattedPrice}</div>
+                    <div className="price">{this.props.price}</div>
                     {this.props.like_count > 0 &&
                         <div className="like-count">{this.props.like_count}</div>
                     }
@@ -31,7 +26,7 @@ class Product extends React.Component {
 }
 
 Product.propTypes = {
-    price: PropTypes.number.isRequired,
+    price: PropTypes.string.isRequired,
     isSoldOut: PropTypes.bool.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
