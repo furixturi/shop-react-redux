@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
-    fetchCategories,
-    fetchProductsIfNeeded
+    fetchCategories
 } from '../actions/actions';
 
 class App extends Component {
@@ -17,41 +16,36 @@ class App extends Component {
         dispatch(fetchCategories());
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.selectedCategoryId !== prevProps.selectedCategoryId) {
-            const { dispatch, selectedCategoryId } = this.props;
-            dispatch(fetchProductsIfNeeded(selectedCategoryId));
-        }
-    }
-
     render() {
-        const { categories, products } = this.props;
+        const { categories, products, isFetchingCategories, isFetchingProducts } = this.props;
+
+        const categoriesState = (isFetchingCategories && categories.length === 0) ? 'Loading categories' : (categories.length + ' categories loaded');
+        const productsState = (isFetchingProducts && products.length === 0) ? 'Loading products' : (products.length + ' products loaded');
+
         return (
             <div>
-                {categories.isFetching && categories.items.length === 0 && <h2>Loading categories</h2>}
-                {products.isFetching && products.items.length === 0 && <h2>Loading products</h2>}
-                {categories.items.lengh > 0 && <h2>categories loaded</h2>}
-                {products.items.lengh > 0 && <h2>categories loaded</h2>}
+                <h2>{categoriesState}</h2>
+                <h2>{productsState}</h2>
             </div>
         );
     }
 }
 
 App.propTypes = {
+    isFetchingCategories: PropTypes.bool,
+    isFetchingProducts: PropTypes.bool,
     selectedCategoryId: PropTypes.string.isRequired,
-    categories: PropTypes.object.isRequired,
-    products: PropTypes.object.isRequired,
+    categories: PropTypes.array.isRequired,
+    products: PropTypes.array.isRequired,
     dispatch: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
-    const { categories, selectedCategoryId } = state;
-    const products = state.productsByCategory[selectedCategoryId] || {
-        isFetching: true,
-        items: []
-    };
+    const { isFetchingCategories, isFetchingProducts, categories, products, selectedCategoryId } = state;
 
     return {
+        isFetchingCategories,
+        isFetchingProducts,
         selectedCategoryId,
         categories,
         products

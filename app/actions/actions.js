@@ -7,8 +7,6 @@ export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
 
 export const SELECT_CATEGORY = 'SELECT_CATEGORY';
 
-export const INVALIDATE_CATEGORY = 'INVALIDATE_CATEGORY';
-
 export const REQUEST_SINGLE_PRODUCT = 'REQUEST_SINGLE_PRODUCT';
 export const RECEIVE_SINGLE_PRODUCT = 'RECEIVE_SINGLE_PRODUCT';
 
@@ -38,8 +36,7 @@ function receiveProducts(categoryId, json) {
     return {
         type: RECEIVE_PRODUCTS,
         categoryId,
-        items: json.data,
-        receivedAt: Date.now()
+        products: json.data
     };
 }
 
@@ -52,37 +49,10 @@ function fetchProducts(categoryId = '1') {
     };
 }
 
-function shouldFetchProducts(state, categoryId = '1') {
-    const items = state.productsByCategory[categoryId];
-
-    if (!items) {
-        return true;
-    } else if (items.isFetching) {
-        return false;
-    }
-
-    return items.didInvalidate;
-}
-
 export function selectCategory(categoryId = '1') {
     return {
         type: SELECT_CATEGORY,
         categoryId
-    };
-}
-
-export function invalidateCategory(categoryId = '1') {
-    return {
-        type: INVALIDATE_CATEGORY,
-        categoryId
-    };
-}
-
-export function fetchProductsIfNeeded(categoryId = '1') {
-    return (dispatch, getState) => {
-        if (shouldFetchProducts(getState(), categoryId)) {
-            return dispatch(fetchProducts(categoryId));
-        }
     };
 }
 
@@ -92,6 +62,6 @@ export function fetchCategories() {
         return fetch('http://localhost:5000/categories')
             .then(response => response.json())
             .then(json => dispatch(receiveCategories(json)))
-            .then(() => dispatch(fetchProductsIfNeeded()));
+            .then(() => dispatch(fetchProducts()));
     };
 }
