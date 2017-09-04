@@ -6,9 +6,12 @@ import {
     fetchCategories
 } from '../actions/actions';
 
+import Product from '../components/Product';
+
 class App extends Component {
     constructor(props) {
         super(props);
+        this.props = props;
     }
 
     componentDidMount() {
@@ -19,13 +22,32 @@ class App extends Component {
     render() {
         const { categories, products, isFetchingCategories, isFetchingProducts } = this.props;
 
-        const categoriesState = (isFetchingCategories && categories.length === 0) ? 'Loading categories' : (categories.length + ' categories loaded');
-        const productsState = (isFetchingProducts && products.length === 0) ? 'Loading products' : (products.length + ' products loaded');
+        let categoryComponents = [];
+        let productComponents = [];
+        if(!isFetchingCategories && categories.length > 0) {
+            categoryComponents = categories.map((category) => {
+                return (
+                    <li><a href="#" key={category.id}>{category.name}</a></li>
+                );
+            });
+        }
+
+        if(!isFetchingProducts && products.length > 0) {
+            productComponents = products.map((product) => {
+                return (
+                    <Product isSoldOut = {product.isSoldOut}
+                        image = {product.image}
+                        name = {product.name}
+                        like_count = {product.like_count}
+                        price = {product.price} />
+                );
+            });
+        }
 
         return (
             <div>
-                <h2>{categoriesState}</h2>
-                <h2>{productsState}</h2>
+                {(!isFetchingCategories && products.length > 0) && <div>{categoryComponents}</div>}
+                {(!isFetchingProducts && products.length > 0) && <div>{productComponents}</div>}
             </div>
         );
     }
