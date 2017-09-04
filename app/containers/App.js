@@ -27,7 +27,7 @@ class App extends Component {
         if(!isFetchingCategories && categories.length > 0) {
             categoryComponents = categories.map((category) => {
                 return (
-                    <li><a href="#" key={category.id}>{category.name}</a></li>
+                    <li key={category.id}><a href="#">{category.name}</a></li>
                 );
             });
         }
@@ -35,7 +35,8 @@ class App extends Component {
         if(!isFetchingProducts && products.length > 0) {
             productComponents = products.map((product) => {
                 return (
-                    <Product isSoldOut = {product.isSoldOut}
+                    <Product key = {product.id}
+                        isSoldOut = {product.isSoldOut}
                         image = {product.image}
                         name = {product.name}
                         like_count = {product.like_count}
@@ -46,7 +47,8 @@ class App extends Component {
 
         return (
             <div>
-                {(!isFetchingCategories && products.length > 0) && <div>{categoryComponents}</div>}
+                {(!isFetchingCategories && products.length > 0) &&
+                    <ul className="categories">{categoryComponents}</ul>}
                 {(!isFetchingProducts && products.length > 0) && <div>{productComponents}</div>}
             </div>
         );
