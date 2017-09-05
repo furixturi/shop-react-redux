@@ -6,7 +6,7 @@ import {
     fetchCategories
 } from '../actions/actions';
 
-import Product from '../components/Product';
+import Home from '../components/Home';
 
 class App extends Component {
     constructor(props) {
@@ -15,41 +15,18 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch(fetchCategories());
+        this.props.dispatch(fetchCategories());
     }
 
     render() {
         const { categories, products, isFetchingCategories, isFetchingProducts } = this.props;
 
-        let categoryComponents = [];
-        let productComponents = [];
-        if(!isFetchingCategories && categories.length > 0) {
-            categoryComponents = categories.map((category) => {
-                return (
-                    <li key={category.id}><a href="#">{category.name}</a></li>
-                );
-            });
-        }
-
-        if(!isFetchingProducts && products.length > 0) {
-            productComponents = products.map((product) => {
-                return (
-                    <Product key = {product.id}
-                        isSoldOut = {product.isSoldOut}
-                        image = {product.image}
-                        name = {product.name}
-                        like_count = {product.like_count}
-                        price = {product.price} />
-                );
-            });
-        }
-
         return (
             <div>
-                {(!isFetchingCategories && products.length > 0) &&
-                    <ul className="categories">{categoryComponents}</ul>}
-                {(!isFetchingProducts && products.length > 0) && <div>{productComponents}</div>}
+                {!isFetchingCategories && products.length > 0 &&
+                 !isFetchingProducts && products.length > 0 &&
+                    <Home categories={categories} products={products} />
+                };
             </div>
         );
     }
