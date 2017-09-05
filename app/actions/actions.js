@@ -40,7 +40,7 @@ function receiveProducts(categoryId, products) {
     };
 }
 
-function fetchProducts(categoryId = '1') {
+export function fetchProducts(categoryId = '1') {
     return dispatch => {
         dispatch(requestProducts(categoryId));
         return fetch('http://localhost:5000/items')
