@@ -15,11 +15,11 @@ class ProductDetail extends React.Component {
             <div className="product-detail">
                 <header className="header">
                     {/* <a href="#" className="icon back icon-button back-button">back</a> */}
-                    <Link className="icon back icon-button back-button" to="/">back</Link>
+                    <Link className="icon back icon-bracket back-button" to="/">back</Link>
                     <div className="title">{this.props.name}</div>
                     <div className="buttons">
-                        <a href="#" className="icon search icon-button search-button">search</a>
-                        <a href="#" className="icon export icon-button export-button">export</a>
+                        <a href="#" className="icon search icon-button icon-magnifier search-button">search</a>
+                        <a href="#" className="icon export icon-button icon-export export-button">export</a>
                     </div>
                 </header>
                 <div className="detail">
@@ -30,16 +30,16 @@ class ProductDetail extends React.Component {
                     <div className="buttons">
                         <div className="left">
                             <span className="like">
-                                <a href="#" className="icon heart button-with-icon">いいね！</a>
+                                <a href="#" className="icon heart icon-heart button-with-icon">いいね！</a>
                                 {this.props.like_count}
                             </span>
                             <span className="comment">
-                                <a href="#" className="icon comment button-with-icon">コメント</a>
+                                <a href="#" className="icon comment icon-comment button-with-icon">コメント</a>
                                 {this.props.comment_count}
                             </span>
                         </div>
                         <div className="right">
-                            <a href="#" className="icon flag icon-button">flag</a>
+                            <a href="#" className="icon flag icon-flag icon-button">flag</a>
                         </div>
                     </div>
                     <div className="description">

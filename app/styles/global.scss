@@ -1,3 +1,8 @@
+/************ icon font ***************/
+:global{
+    @import "icon-font-variables";
+    @import 'icon-font';
+}
 /************* varialbles ******************/
 $light-grey: #efefef;
 

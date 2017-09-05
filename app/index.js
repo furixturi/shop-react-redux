@@ -1,3 +1,4 @@
+import './styles/import-fonts';
 import React from 'react';
 import { render } from 'react-dom';
 

@@ -8,7 +8,7 @@ module.exports = {
     devtool: 'eval-source-map',
     entry: [
         'babel-polyfill',
-        'webpack-dev-server/client?http://localhost:3002',
+        'webpack-dev-server/client?http://localhost:3003',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
         path.join(__dirname, 'app/index.js')
@@ -58,8 +58,12 @@ module.exports = {
                 test: /\.scss$/,
                 loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]!sass'
             },
-            { test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
-            { test: /\.(ttf|eot|svg)(\?[a-z0-9#=&.]+)?$/, loader: 'file'}
+            { test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/, 
+                loader: 'url?limit=10000&mimetype=application/font-woff'
+            },
+            { test: /\.(ttf|eot|svg|woff)(\?[a-z0-9#=&.]+)?$/, 
+                loader: 'file-loader?name=[name].[ext]'
+            }
         ]
     }
 };
