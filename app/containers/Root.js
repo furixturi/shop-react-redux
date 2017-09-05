@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router';
 
 import configureStore from '../store/configureStore';
 import Home from './Home';
@@ -13,10 +14,11 @@ export default class Root extends Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <div>
+                    <Switch>
                         <Route exact path="/" component = {Home} />
                         <Route path="/detail/:id" component = {Detail} />
-                    </div>
+                        <Redirect to="/" />
+                    </Switch>
                 </Router>
             </Provider>
         );
