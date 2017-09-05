@@ -6,9 +6,9 @@ import {
     fetchCategories
 } from '../actions/actions';
 
-import Home from '../components/Home';
+import HomeComponent from '../components/HomeComponent';
 
-class App extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         this.props = props;
@@ -25,14 +25,14 @@ class App extends Component {
             <div>
                 {!isFetchingCategories && products.length > 0 &&
                  !isFetchingProducts && products.length > 0 &&
-                    <Home categories={categories} products={products} />
+                    <HomeComponent categories={categories} products={products} />
                 };
             </div>
         );
     }
 }
 
-App.propTypes = {
+Home.propTypes = {
     isFetchingCategories: PropTypes.bool,
     isFetchingProducts: PropTypes.bool,
     selectedCategoryId: PropTypes.string.isRequired,
@@ -53,4 +53,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Home);

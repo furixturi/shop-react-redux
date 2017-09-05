@@ -5,11 +5,12 @@ import Categories from './Categories';
 import ProductsList from './ProductsList';
 // import Product from './Product';
 
-class Home extends React.Component {
+class HomeComponent extends React.Component {
     render() {
         return (
             <div className="home">
                 <header>
+                    <div className = "header-bar"></div>
                     <Categories categories = {this.props.categories} />
                 </header>
                 <ProductsList products = {this.props.products} />
@@ -18,9 +19,9 @@ class Home extends React.Component {
     }
 }
 
-Home.propTypes = {
+HomeComponent.propTypes = {
     products: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired
 };
 
-export default Home;
+export default HomeComponent;

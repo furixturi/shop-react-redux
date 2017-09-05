@@ -17,18 +17,24 @@ function requestCategories() {
     };
 }
 
-function receiveCategories(categories) {
-    return {
-        type: RECEIVE_CATEGORIES,
-        categories: categories,
-    };
-}
-
-// show loading
 function requestProducts(categoryId = '1') {
     return {
         type: REQUEST_PRODUCTS,
         categoryId
+    };
+}
+
+function requestSingleProduct() {
+    return {
+        type: REQUEST_SINGLE_PRODUCT
+    };
+}
+
+// promise solved
+function receiveCategories(categories) {
+    return {
+        type: RECEIVE_CATEGORIES,
+        categories: categories,
     };
 }
 
@@ -37,6 +43,13 @@ function receiveProducts(categoryId, products) {
         type: RECEIVE_PRODUCTS,
         categoryId,
         products: products
+    };
+}
+
+function receiveSingleProduct(product) {
+    return {
+        type: RECEIVE_SINGLE_PRODUCT,
+        product
     };
 }
 
@@ -74,5 +87,22 @@ export function fetchCategories() {
             .then(response => response.json())
             .then(json => dispatch(receiveCategories(json.data)))
             .then(() => dispatch(fetchProducts()));
+    };
+}
+
+export function fetchSingleProduct(productId = '1') {
+    return dispatch => {
+        dispatch(requestSingleProduct());
+        return fetch('http://localhost:5000/items/' + productId)
+            .then(response => response.json())
+            .then(json => {
+                const rawData = json;
+                const formattedPrice = rawData.price.toLocaleString(undefined, {
+                    style: 'currency',
+                    currency: 'JPY',
+                    currencyDisplay: 'symbol'
+                });
+                dispatch(receiveSingleProduct(Object.assign(rawData, {price: formattedPrice})));
+            });
     };
 }

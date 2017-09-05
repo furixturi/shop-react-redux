@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+
 class ProductDetail extends React.Component {
 
     constructor(props) {
@@ -12,7 +14,8 @@ class ProductDetail extends React.Component {
         return (
             <div className="product-detail">
                 <header className="header">
-                    <a href="#" className="icon back icon-button back-button">back</a>
+                    {/* <a href="#" className="icon back icon-button back-button">back</a> */}
+                    <Link className="icon back icon-button back-button" to="/">back</Link>
                     <div className="title">{this.props.name}</div>
                     <div className="buttons">
                         <a href="#" className="icon search icon-button search-button">search</a>

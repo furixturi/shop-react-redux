@@ -4,7 +4,9 @@ import {
     RECEIVE_CATEGORIES,
     SELECT_CATEGORY,
     REQUEST_PRODUCTS,
-    RECEIVE_PRODUCTS
+    RECEIVE_PRODUCTS,
+    REQUEST_SINGLE_PRODUCT,
+    RECEIVE_SINGLE_PRODUCT
 } from '../actions/actions';
 
 function isFetchingCategories(state = false, action) {
@@ -23,6 +25,17 @@ function isFetchingProducts(state = false, action) {
         case REQUEST_PRODUCTS:
             return true;
         case RECEIVE_PRODUCTS:
+            return false;
+        default:
+            return state;
+    }
+}
+
+function isFetchingProduct(state = false, action) {
+    switch (action.type) {
+        case REQUEST_SINGLE_PRODUCT:
+            return true;
+        case RECEIVE_SINGLE_PRODUCT:
             return false;
         default:
             return state;
@@ -60,12 +73,25 @@ function products(state = [], action) {
     }
 }
 
+function product(state = null, action) {
+    switch (action.type) {
+        case REQUEST_SINGLE_PRODUCT:
+            return state;
+        case RECEIVE_SINGLE_PRODUCT:
+            return action.product;
+        default:
+            return state;
+    }
+}
+
 const rootReducer = combineReducers({
     isFetchingCategories,
     isFetchingProducts,
+    isFetchingProduct,
     categories,
     products,
-    selectedCategoryId
+    selectedCategoryId,
+    product
 });
 
 export default rootReducer;
