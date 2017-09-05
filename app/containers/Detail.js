@@ -19,7 +19,6 @@ class Detail extends React.Component {
 
     render() {
         const { isFetchingProduct, product } = this.props;
-        console.log('isFetchingProduct: ', isFetchingProduct, ' product: ', product);
         return (
             <div>
                 { !isFetchingProduct && product &&
