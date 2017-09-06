@@ -1,6 +1,49 @@
+@import '../global';
+
+.product-container {
+    background: white;
+}
+
 .product {
+    position: relative;
+    overflow: hidden;
+    
     img {
         display: block;
         width: 100%;
+    }
+
+    .price {
+        font-weight: bold;
+    }
+
+    .info-container {
+        padding: 4px 8px 8px;
+        line-height: 1.25;
+    }
+
+    .like-count {
+        color: $middle-grey;
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+
+        .icon:before {
+            font-size: 0.8rem;
+            margin-right: 4px;
+        }
+    }
+
+    &.sold-out:after {
+        content: "SOLD";
+        position: absolute;
+        top: -9px;
+        left: -40px;
+        z-index: 1;
+        color: white;
+        background: #ea352d;
+        transform: rotateZ(-45deg);
+        padding: 35px 39px 5px;
+        letter-spacing: 0.1em;
     }
 }
