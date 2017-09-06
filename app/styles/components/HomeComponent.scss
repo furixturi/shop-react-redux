@@ -6,6 +6,7 @@
         position: fixed;
         width: 100%;
         max-width: 414px;
+        top: 0;
     }
 
     .ui-bar {
@@ -40,7 +41,7 @@
 
         li {
             display: inline;
-            margin: 0 25px;
+            margin: 0 15px;
 
             &.active {
                 color: $brand-color;

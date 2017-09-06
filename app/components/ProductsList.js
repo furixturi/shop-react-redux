@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Product from './Product';
 
+import '../styles/components/ProductsList.scss';
+
 class ProductsList extends React.Component {
     render() {
         const productComponents = this.props.products.map((product) => {
             return (
-                <Link to = {'detail/' + product.id} key = {product.id}>
+                <Link className="product-container" to = {'detail/' + product.id} key = {product.id}>
                     <Product
                         isSoldOut = {product.isSoldOut}
                         image = {product.image}

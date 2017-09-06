@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/components/Product.scss';
+
 class Product extends React.Component {
     constructor(props) {
         super(props);
