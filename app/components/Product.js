@@ -18,7 +18,7 @@ class Product extends React.Component {
                     <div className="price">{this.props.price}</div>
                     {this.props.like_count > 0 &&
                         <div className="like-count">
-                            <a href="#" className="icon icon-heart icon-button"></a>
+                            <span href="#" className="icon icon-heart icon-button"></span>
                             {this.props.like_count}</div>
                     }
                 </div>
