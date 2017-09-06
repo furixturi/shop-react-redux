@@ -26,7 +26,7 @@ class Home extends Component {
                 {!isFetchingCategories && products.length > 0 &&
                  !isFetchingProducts && products.length > 0 &&
                     <HomeComponent categories={categories} products={products} />
-                };
+                }
             </div>
         );
     }
