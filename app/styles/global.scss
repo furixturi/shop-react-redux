@@ -16,7 +16,9 @@
 /************* varialbles ******************/
 $light-grey: #efefef;
 $middle-grey: #b1b1b1;
+$middle-grey-darker: #a5a4a9;
 $dark-grey: #333333;
+$brown: #36231f;
 $brand-color: #ea352d;
 
 /************* branding and reset ***************/
@@ -64,7 +66,10 @@ body {
     }
     font-size: 0;
 
-    &.icon-bell:before {
+    &.icon-bell:before,
+    &.icon-bracket:before,
+    &.icon-magnifier:before,
+    &.icon-export:before {
         font-size: 1.5rem;
     }
 }
