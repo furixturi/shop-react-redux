@@ -15,6 +15,7 @@
 
 /************* varialbles ******************/
 $light-grey: #efefef;
+$middle-grey: #b1b1b1;
 $dark-grey: #333333;
 $brand-color: #ea352d;
 
@@ -22,6 +23,16 @@ $brand-color: #ea352d;
 ::selection {
     color: white;
     background: $brand-color;
+}
+
+input[type=text], textarea {
+    outline: none;
+    border: 1px solid transparent;
+
+    &:focus {
+        box-shadow: 0 0 5px $brand-color;
+        border: 1px solid $brand-color;
+    }
 }
 
 * {
@@ -43,10 +54,25 @@ a {
 /************ global styles ************/
 body {
     background: $light-grey;
-    font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    font-family: "Source Sans Pro", "Hiragino Kaku Gothic Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
     color: $dark-grey;
 }
 
+.icon-button {
+    &:before { 
+        font-size: 1rem;
+    }
+    font-size: 0;
+
+    &.icon-bell:before {
+        font-size: 1.5rem;
+    }
+}
+
+#root {
+    max-width: 414px;
+    margin: 0 auto;
+}
  
 
 

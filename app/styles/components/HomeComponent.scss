@@ -1,0 +1,65 @@
+@import '../global';
+
+.home {
+    header {
+        color: $middle-grey;
+        position: fixed;
+        width: 100%;
+        max-width: 414px;
+    }
+
+    .ui-bar {
+        background: white;
+        padding: 30px 10px 10px 10px;
+        border-bottom: 1px solid $light-grey;
+        display: flex;
+        align-items: center;
+
+        input[type=text] {
+            font-size: 1rem;
+            padding: 10px 5px;
+            border-radius: 8px;
+            background: $light-grey;
+            color: $dark-grey;
+            margin: 0 10px;
+            
+            flex-grow: 2;
+        }
+
+        .icon-button {
+            margin: 0 10px;
+        }
+    }
+
+    ul.categories {
+        background: white;
+        padding: 15px 0;
+        white-space: nowrap;
+        clip-path: polygon(0 0, 0 100%, calc(50% - 10px) 100%, 
+            50% calc(100% - 10px), calc(50% + 10px) 100%, 100% 100%, 100% 0);
+
+        li {
+            display: inline;
+            margin: 0 25px;
+
+            &.active {
+                color: $brand-color;
+            }
+        }
+    }
+
+    .icon.new-products {
+        position: absolute;
+        background: white;
+        left: 50%;
+        transform: translate(-50%, 10px);
+        padding: 10px 20px 8px 20px;
+        border-radius: 20px;
+        color: $dark-grey;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        &:before {
+            color: $brand-color;
+            margin-right: 10px;
+        }
+    }
+}
