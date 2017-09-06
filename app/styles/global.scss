@@ -3,13 +3,51 @@
     @import "icon-font-variables";
     @import 'icon-font';
 }
+
+/************ utils **************/
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
 /************* varialbles ******************/
 $light-grey: #efefef;
+$dark-grey: #333333;
+$brand-color: #ea352d;
 
-body {
-    background: $light-grey;
+/************* branding and reset ***************/
+::selection {
+    color: white;
+    background: $brand-color;
+}
+
+* {
+    border: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
 }
 
 a {
     text-decoration: none;
-} 
+    color: inherit;
+}
+
+/************ global styles ************/
+body {
+    background: $light-grey;
+    font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    color: $dark-grey;
+}
+
+ 
+
+
+
