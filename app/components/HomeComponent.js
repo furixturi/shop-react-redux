@@ -3,22 +3,23 @@ import PropTypes from 'prop-types';
 
 import Categories from './Categories';
 import ProductsList from './ProductsList';
-// import Product from './Product';
+
+import '../styles/components/HomeComponent.scss';
 
 class HomeComponent extends React.Component {
     render() {
         return (
             <div className="home">
                 <header>
-                    <a href="#" className="icon icon-nudge icon-button">navi</a>
-                    <input type="text" placeholder="検索" />
-                    <a href="#" className="icon icon-bell iocn-button">notification</a>
-                    <a href="#" className="icon icon-checkmark icon-button">checked</a>
-                </header>
-                <div>
+                    <div className="ui-bar">
+                        <a href="#" className="icon icon-nudge icon-button">navi</a>
+                        <input type="text" placeholder="検索" />
+                        <a href="#" className="icon icon-bell iocn-button">notification</a>
+                        <a href="#" className="icon icon-checkmark icon-button">checked</a>
+                    </div>
                     <Categories categories = {this.props.categories} />
                     <a href="#" className="icon icon-arrow">新しい商品</a>
-                </div>
+                </header>
                 <ProductsList products = {this.props.products} />
                 <a href="#" className="icon icon-camera rounded ">出品</a>
             </div>
