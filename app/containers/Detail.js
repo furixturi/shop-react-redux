@@ -18,10 +18,10 @@ class Detail extends React.Component {
     }
 
     render() {
-        const { isFetchingProduct, product } = this.props;
+        const { isFetchingSingleProduct, product } = this.props;
         return (
             <div>
-                { !isFetchingProduct && product &&
+                { !isFetchingSingleProduct && product &&
                     <ProductDetail {...product} />
                 }
             </div>
@@ -32,14 +32,14 @@ class Detail extends React.Component {
 Detail.propTypes = {
     dispatch: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
-    isFetchingProduct: PropTypes.bool,
+    isFetchingSingleProduct: PropTypes.bool,
     product: PropTypes.object
 };
 
 function mapStateToProps( state ) {
-    const { isFetchingProduct, product } = state;
+    const { isFetchingSingleProduct, product } = state;
     return {
-        isFetchingProduct,
+        isFetchingSingleProduct,
         product
     };
 }

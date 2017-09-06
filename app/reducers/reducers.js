@@ -31,7 +31,7 @@ function isFetchingProducts(state = false, action) {
     }
 }
 
-function isFetchingProduct(state = false, action) {
+function isFetchingSingleProduct(state = false, action) {
     switch (action.type) {
         case REQUEST_SINGLE_PRODUCT:
             return true;
@@ -87,7 +87,7 @@ function product(state = null, action) {
 const rootReducer = combineReducers({
     isFetchingCategories,
     isFetchingProducts,
-    isFetchingProduct,
+    isFetchingSingleProduct,
     categories,
     products,
     selectedCategoryId,
