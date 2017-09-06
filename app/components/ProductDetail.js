@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
+import '../styles/components/ProductDetail.scss';
+
 class ProductDetail extends React.Component {
 
     constructor(props) {
@@ -11,11 +13,15 @@ class ProductDetail extends React.Component {
     }
 
     render() {
+        const likeCount = this.props.like_count;
+        const likeCountStr = '' + (( !isNaN(likeCount) && likeCount > 0 ) ? likeCount : '');
+        const commentCount = this.props.comment_count;
+        const commentCountStr = '' + (( !isNaN(commentCount) && commentCount > 0 ) ? commentCount : '');
+
         return (
             <div className="product-detail">
                 <header className="header">
-                    {/* <a href="#" className="icon back icon-button back-button">back</a> */}
-                    <Link className="icon back icon-bracket back-button" to="/">back</Link>
+                    <Link className="icon back icon-bracket icon-button back-button" to="/">back</Link>
                     <div className="title">{this.props.name}</div>
                     <div className="buttons">
                         <a href="#" className="icon search icon-button icon-magnifier search-button">search</a>
@@ -26,20 +32,22 @@ class ProductDetail extends React.Component {
                     <div className="image-container">
                         <img src={this.props.image} />
                     </div>
-                    <div className="product-name">{this.props.name}</div>
-                    <div className="buttons">
-                        <div className="left">
-                            <span className="like">
-                                <a href="#" className="icon heart icon-heart button-with-icon">いいね！</a>
-                                {this.props.like_count}
-                            </span>
-                            <span className="comment">
-                                <a href="#" className="icon comment icon-comment button-with-icon">コメント</a>
-                                {this.props.comment_count}
-                            </span>
-                        </div>
-                        <div className="right">
-                            <a href="#" className="icon flag icon-flag icon-button">flag</a>
+                    <div className="product-info">
+                        <div className="product-name">{this.props.name}</div>
+                        <div className="buttons">
+                            <div className="left">
+                                <span className="like">
+                                    <a href="#" className="icon heart icon-heart button-with-icon">いいね！</a>
+                                    {likeCountStr}
+                                </span>
+                                <span className="comment">
+                                    <a href="#" className="icon comment icon-comment button-with-icon">コメント</a>
+                                    {commentCountStr}
+                                </span>
+                            </div>
+                            <div className="right">
+                                <a href="#" className="icon flag icon-flag icon-button">flag</a>
+                            </div>
                         </div>
                     </div>
                     <div className="description">
@@ -65,8 +73,8 @@ ProductDetail.propTypes = {
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    like_count: PropTypes.number.isRequired,
-    comment_count: PropTypes.number.isRequired
+    like_count: PropTypes.number,
+    comment_count: PropTypes.number
 };
 
 export default ProductDetail;
