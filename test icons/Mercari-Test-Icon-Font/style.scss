@@ -1,0 +1,84 @@
+@import "variables";
+
+@font-face {
+  font-family: 'Mercari-Test-Icon-Font';
+  src:  url('#{$icomoon-font-path}/Mercari-Test-Icon-Font.eot?h3phkx');
+  src:  url('#{$icomoon-font-path}/Mercari-Test-Icon-Font.eot?h3phkx#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/Mercari-Test-Icon-Font.ttf?h3phkx') format('truetype'),
+    url('#{$icomoon-font-path}/Mercari-Test-Icon-Font.woff?h3phkx') format('woff'),
+    url('#{$icomoon-font-path}/Mercari-Test-Icon-Font.svg?h3phkx#Mercari-Test-Icon-Font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Mercari-Test-Icon-Font' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-heart {
+  &:before {
+    content: $icon-heart;
+  }
+}
+.icon-camera {
+  &:before {
+    content: $icon-camera;
+  }
+}
+.icon-export {
+  &:before {
+    content: $icon-export;
+  }
+}
+.icon-magnifier {
+  &:before {
+    content: $icon-magnifier;
+  }
+}
+.icon-bracket {
+  &:before {
+    content: $icon-bracket;
+  }
+}
+.icon-checkmark {
+  &:before {
+    content: $icon-checkmark;
+  }
+}
+.icon-bell {
+  &:before {
+    content: $icon-bell;
+  }
+}
+.icon-arrow {
+  &:before {
+    content: $icon-arrow;
+  }
+}
+.icon-nudge {
+  &:before {
+    content: $icon-nudge;
+  }
+}
+.icon-comment {
+  &:before {
+    content: $icon-comment;
+  }
+}
+.icon-flag {
+  &:before {
+    content: $icon-flag;
+  }
+}
+
