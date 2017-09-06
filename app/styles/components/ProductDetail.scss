@@ -1,0 +1,136 @@
+@import '../global';
+
+.product-detail {
+    width: 100%;
+    background: white;
+
+    header {
+        color: $middle-grey;
+        position: fixed;
+        width: 100%;
+        max-width: 414px;
+        top: 0;
+        z-index: 2;
+        background: white;
+        padding: 30px 10px 6px 10px;
+        border-bottom: 1px solid $light-grey;
+        display: flex;
+        align-items: center;
+
+        .title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: $dark-grey;
+            margin: 0 10px;
+            padding: 10px 5px;
+            flex-grow: 2;
+        }
+
+        .icon-button {
+            margin: 0 10px;
+        }
+    }
+
+    img {
+        width: 100%;
+        display: block;
+    }
+
+    .detail {
+        margin-top: 81px;
+
+        .product-info {
+            padding: 6px 18px 12px;
+            font-size: 1.2rem;
+        }
+
+        .buttons {
+            @include clearfix;
+            .left {float: left}
+            .right {float: right;}
+            margin-top: 36px;
+            color: $middle-grey-darker;
+
+            .icon {
+                display: inline-block;
+                background: $light-grey;
+                
+                line-height: 32px;
+                border-radius: 16px;
+                padding: 0 10px;
+                font-size: 0.8rem;
+                text-align: center;
+                margin-right: 4px;
+
+                &.button-with-icon {
+                    &:before {
+                        margin-right: 5px;
+                        font-weight: bold;
+                        font-size: 1rem;
+                        position: relative;
+                        top: 2px;
+                    }
+                }
+
+                &.flag {
+                    font-size: 0;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    padding: 0;
+
+                    &:before {
+                        font-size: 0.9rem;
+                    }                
+                }
+            }
+
+            span {
+                margin-right: 20px;
+                font-size: 1rem;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .description-header {
+        background: $light-grey;
+        color: $middle-grey-darker;
+        padding: 30px 18px 6px;
+    }
+
+    .description-body {
+        padding: 6px 18px 30px;
+    }
+
+    footer {
+        width: 100%;
+        max-width: 414px;
+        position: fixed;
+        bottom: 0;
+        background: $brown;
+        color: white;
+        padding: 15px 15px 10px;
+
+        .price {
+            font-size: 2.5rem;
+
+        }
+
+        .small {
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        .button-red {
+            background: $brand-color;
+            padding: 15px;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            right: 8px;
+        }
+    }
+}
