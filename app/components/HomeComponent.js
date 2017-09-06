@@ -14,11 +14,12 @@ class HomeComponent extends React.Component {
                     <div className="ui-bar">
                         <a href="#" className="icon icon-nudge icon-button">navi</a>
                         <input type="text" placeholder="検索" />
-                        <a href="#" className="icon icon-bell iocn-button">notification</a>
+                        <a href="#" className="icon icon-bell icon-button">notification</a>
                         <a href="#" className="icon icon-checkmark icon-button">checked</a>
                     </div>
-                    <Categories categories = {this.props.categories} />
-                    <a href="#" className="icon icon-arrow">新しい商品</a>
+                    <Categories categories = {this.props.categories}
+                        selectedCategoryId = {this.props.selectedCategoryId} />
+                    <a href="#" className="icon icon-arrow new-products">新しい商品</a>
                 </header>
                 <ProductsList products = {this.props.products} />
                 <a href="#" className="icon icon-camera rounded ">出品</a>
@@ -29,7 +30,8 @@ class HomeComponent extends React.Component {
 
 HomeComponent.propTypes = {
     products: PropTypes.array.isRequired,
-    categories: PropTypes.array.isRequired
+    categories: PropTypes.array.isRequired,
+    selectedCategoryId: PropTypes.string.isRequired
 };
 
 export default HomeComponent;

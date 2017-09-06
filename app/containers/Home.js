@@ -19,13 +19,15 @@ class Home extends Component {
     }
 
     render() {
-        const { categories, products, isFetchingCategories, isFetchingProducts } = this.props;
+        const { categories, products, isFetchingCategories, isFetchingProducts, selectedCategoryId } = this.props;
 
         return (
             <div>
                 {!isFetchingCategories && products.length > 0 &&
                  !isFetchingProducts && products.length > 0 &&
-                    <HomeComponent categories={categories} products={products} />
+                    <HomeComponent
+                        categories={categories} products={products}
+                        selectedCategoryId={selectedCategoryId} />
                 }
             </div>
         );
