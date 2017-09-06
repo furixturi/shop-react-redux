@@ -19,10 +19,12 @@ class HomeComponent extends React.Component {
                     </div>
                     <Categories categories = {this.props.categories}
                         selectedCategoryId = {this.props.selectedCategoryId} />
-                    <a href="#" className="icon icon-arrow new-products">新しい商品</a>
+                    <a href="#" className="icon icon-arrow new-products-button">新しい商品</a>
                 </header>
                 <ProductsList products = {this.props.products} />
-                <a href="#" className="icon icon-camera rounded ">出品</a>
+                <footer>
+                    <a href="#" className="icon icon-camera sell-button rounded "><span>出品</span></a>
+                </footer>
             </div>
         );
     }

@@ -49,11 +49,11 @@
         }
     }
 
-    .icon.new-products {
+    .new-products-button.icon {
         position: absolute;
         background: white;
         left: 50%;
-        transform: translate(-50%, 10px);
+        transform: translate(-50%, 8px);
         padding: 10px 20px 8px 20px;
         border-radius: 20px;
         color: $dark-grey;
@@ -61,6 +61,46 @@
         &:before {
             color: $brand-color;
             margin-right: 10px;
+        }
+    }
+
+    footer {
+        width: 100%;
+        max-width: 414px;
+        position: fixed;
+        bottom: 0;
+        height: 100px;
+        overflow: hidden;
+        pointer-events: none;
+
+        .sell-button.icon {
+            pointer-events: initial;
+            background: $brand-color;
+            color: white;
+            position: absolute;
+            right: -16px;
+            bottom: -16px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+
+            span {
+                position: absolute;
+                display: block;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.9rem;
+                font-weight: bold;
+            }
+
+            &:before {
+                font-size: 2.1rem;
+                top: 40px;
+                display: block;
+                position: relative;
+            }
         }
     }
 }
