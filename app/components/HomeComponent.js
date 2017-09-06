@@ -10,10 +10,17 @@ class HomeComponent extends React.Component {
         return (
             <div className="home">
                 <header>
-                    <div className = "header-bar"></div>
-                    <Categories categories = {this.props.categories} />
+                    <a href="#" className="icon icon-nudge icon-button">navi</a>
+                    <input type="text" placeholder="検索" />
+                    <a href="#" className="icon icon-bell iocn-button">notification</a>
+                    <a href="#" className="icon icon-checkmark icon-button">checked</a>
                 </header>
+                <div>
+                    <Categories categories = {this.props.categories} />
+                    <a href="#" className="icon icon-arrow">新しい商品</a>
+                </div>
                 <ProductsList products = {this.props.products} />
+                <a href="#" className="icon icon-camera rounded ">出品</a>
             </div>
         );
     }
