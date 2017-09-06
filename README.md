@@ -8,4 +8,5 @@ Webpack-dev-server runs on port 3003
 
 ## To run the app:
 $npm install
+
 $npm start
