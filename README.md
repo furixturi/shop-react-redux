@@ -7,6 +7,25 @@ Webpack-dev-server runs on port 3003
 
 
 ## To run the app:
-$npm install
 
-$npm start
+* First time:
+
+```
+$ npm install
+$ cd node-api-server/
+$ npm install
+```
+
+* Every time:
+First go in the server folder and start the server
+
+```
+$ cd node-api-server/
+$ node app.js
+```
+
+Then open another console/terminal tab, in the project root folder start the front-end app
+
+```
+$ npm start
+```
