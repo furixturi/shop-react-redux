@@ -10,6 +10,9 @@ export const SELECT_CATEGORY = 'SELECT_CATEGORY';
 export const REQUEST_SINGLE_PRODUCT = 'REQUEST_SINGLE_PRODUCT';
 export const RECEIVE_SINGLE_PRODUCT = 'RECEIVE_SINGLE_PRODUCT';
 
+// const dataUrlRoot = 'http://localhost:5000/'; // Ruby API Server
+const dataUrlRoot = 'http://localhost:3000/'; // Node API Server
+
 // show loading
 function requestCategories() {
     return {
@@ -56,7 +59,7 @@ function receiveSingleProduct(product) {
 export function fetchProducts(categoryId = '1') {
     return dispatch => {
         dispatch(requestProducts(categoryId));
-        return fetch('http://localhost:5000/items')
+        return fetch(dataUrlRoot + 'items')
             .then(response => response.json())
             .then(json => {
                 const rawData = json.data;
@@ -83,7 +86,7 @@ export function selectCategory(categoryId = '1') {
 export function fetchCategories() {
     return dispatch => {
         dispatch(requestCategories());
-        return fetch('http://localhost:5000/categories')
+        return fetch(dataUrlRoot + 'categories')
             .then(response => response.json())
             .then(json => dispatch(receiveCategories(json.data)))
             .then(() => dispatch(fetchProducts()));
@@ -93,7 +96,7 @@ export function fetchCategories() {
 export function fetchSingleProduct(productId = '1') {
     return dispatch => {
         dispatch(requestSingleProduct());
-        return fetch('http://localhost:5000/items/' + productId)
+        return fetch(dataUrlRoot + 'items/' + productId)
             .then(response => response.json())
             .then(json => {
                 const rawData = json;
