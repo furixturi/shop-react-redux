@@ -1,9 +1,11 @@
 # shop-react-redux
 Built the list view and the single item view of an online store using react, redux and react-router.
+
 Dev server and bundler is WebPack. 
 Mock API data server is Express.js
-Webpack-dev-server listens on port 3003
-Express.js server listens on port 3000
+
+* Webpack-dev-server listens on port 3003
+* Express.js server listens on port 3000
 
 ## To run the app:
 
